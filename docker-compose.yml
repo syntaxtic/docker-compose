@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  simple_api:
+    build: ./api
+    container_name: simple_api_container
+
+    ports:
+      - '4000:4000'
+
+    volumes:
+      - ./api/app:/app
+      - /app/node_modules
+
+  simple_frontend:
+    build: ./frontend
+    container_name: simple_frontend_container
+
+    ports:
+      - '3000:3000'
+
+    volumes:
+      - ./frontend/app:/app
+      - /app/node_modules
+
+    stdin_open: true
+    tty: true
